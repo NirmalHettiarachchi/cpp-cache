@@ -1550,3 +1550,5 @@ auto make_memoized(std::size_t capacity, Fn&& fn) {
 }  // namespace cpp_cache
 
 #endif  // CPP_CACHE_CACHE_HPP_
+
+// history marker: fifo policy landed
