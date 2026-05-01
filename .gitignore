@@ -1,1 +1,10 @@
 build/
+*.o
+*.a
+*.so
+*.out
+compile_commands.json
+.cache/
+.clangd/
+*.swp
+*~
