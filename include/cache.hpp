@@ -1551,4 +1551,4 @@ auto make_memoized(std::size_t capacity, Fn&& fn) {
 
 #endif  // CPP_CACHE_CACHE_HPP_
 
-// history marker: snapshot api
+// history marker: resize api
