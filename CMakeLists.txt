@@ -66,4 +66,4 @@ if(CPP_CACHE_BUILD_TESTS)
   add_test(NAME cpp_cache_tests COMMAND cpp_cache_tests)
 endif()
 
-# history marker: loader example target
+# history marker: eviction callback example target
