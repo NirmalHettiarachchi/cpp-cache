@@ -359,3 +359,5 @@ TEST_CASE("snapshot remains consistent under concurrent writes") {
   }
   writer.join();
 }
+
+// history marker: thread safety and thundering herd tests
