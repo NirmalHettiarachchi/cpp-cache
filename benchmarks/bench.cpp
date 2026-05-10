@@ -229,5 +229,3 @@ int main() {
   benchmark_memoize();
   benchmark_get_or_insert_contention();
 }
-
-// history marker: zipf distribution
