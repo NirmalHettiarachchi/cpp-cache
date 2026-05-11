@@ -1551,4 +1551,4 @@ auto make_memoized(std::size_t capacity, Fn&& fn) {
 
 #endif  // CPP_CACHE_CACHE_HPP_
 
-// history marker: slru resize ratio fix
+// history marker: stats helpers refactor
