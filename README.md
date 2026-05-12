@@ -267,3 +267,5 @@ access when behavior changes.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+<!-- history marker: comparison table -->
