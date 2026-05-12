@@ -268,4 +268,4 @@ access when behavior changes.
 
 MIT. See [LICENSE](LICENSE).
 
-<!-- history marker: comparison table -->
+<!-- history marker: benchmark table and memoize section -->
