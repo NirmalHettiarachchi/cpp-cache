@@ -65,5 +65,3 @@ if(CPP_CACHE_BUILD_TESTS)
   cpp_cache_configure_target(cpp_cache_tests)
   add_test(NAME cpp_cache_tests COMMAND cpp_cache_tests)
 endif()
-
-# history marker: benchmark target
