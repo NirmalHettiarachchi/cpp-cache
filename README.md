@@ -267,5 +267,3 @@ access when behavior changes.
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-<!-- history marker: benchmark table and memoize section -->
