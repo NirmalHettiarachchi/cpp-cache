@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            compiler: g++
+            label: Linux GCC
+          - os: ubuntu-latest
+            compiler: clang++
+            label: Linux Clang
+          - os: macos-latest
+            compiler: g++
+            label: macOS GCC
+          - os: windows-latest
+            compiler: default
+            label: Windows MSVC
+
+    name: ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure (Unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
+            -DCMAKE_CXX_STANDARD=17
+
+      - name: Configure (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          cmake -S . -B build `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_CXX_STANDARD=17
+
+      - name: Build
+        run: cmake --build build --config Release -j4
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure -C Release
+
+      - name: Smoke (Unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          ./build/examples_lru
+          ./build/examples_lfu
+          ./build/examples_memoize
+          ./build/examples_loader
+
+      - name: Smoke (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          .\build\Release\examples_lru.exe
+          .\build\Release\examples_lfu.exe
+          .\build\Release\examples_memoize.exe
+          .\build\Release\examples_loader.exe

@@ -58,6 +58,7 @@ endif()
 
 if(CPP_CACHE_BUILD_TESTS)
   include(CTest)
+  enable_testing()
 
   add_executable(tests tests/test_cache.cpp)
   target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/tests)
