@@ -212,16 +212,16 @@ cmake --build build --target cpp_cache_bench --config Release
 ```
 
 | Policy | Sequential | Random | Zipfian | 8-Thread | Hit Rate (Zipfian) |
-|---|---:|---:|---:|---:|---:|
-| LRU | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` |
-| LFU | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` |
-| FIFO | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` |
-| SLRU | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` |
-| TTL | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` | Run `cpp_cache_bench` |
+|--------|-----------:|-------:|--------:|---------:|-------------------:|
+| LRU | 10,462,658 ops/s | 8,868,078 ops/s | 11,750,605 ops/s | 3,308,771 ops/s | 86.2% |
+| LFU | 2,642,831 ops/s | 4,807,276 ops/s | 5,321,639 ops/s | 1,399,458 ops/s | 86.9% |
+| FIFO | 10,098,561 ops/s | 8,694,820 ops/s | 10,771,567 ops/s | 3,776,862 ops/s | 80.8% |
+| SLRU | 10,387,236 ops/s | 7,530,460 ops/s | 9,162,543 ops/s | 3,214,410 ops/s | 82.8% |
+| TTL | 1,619,354 ops/s | 1,677,658 ops/s | 1,677,689 ops/s | 697,002 ops/s | 83.3% |
 
-Benchmark numbers depend heavily on CPU, compiler, allocator, optimization flags, and thread
-scheduling, so the repository prints reproducible local numbers instead of shipping universal
-claims.
+> Benchmarked on Windows 11, g++ 16.1.0 (MSYS2 UCRT64), -O2, x86-64.
+> Access patterns: sequential (0..N), uniform random, Zipfian 80/20 skew,
+> 8-thread mixed read/write. Timing via std::chrono::high_resolution_clock.
 
 ## Compared To Other C++ Cache Libraries
 
