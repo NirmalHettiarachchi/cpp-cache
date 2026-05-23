@@ -30,6 +30,7 @@ int main() {
   }
 
   const auto stats = cache.stats();
-  std::cout << "final_size=" << cache.size() << " hits=" << stats.hits
+  std::cout << "All threads done\n";
+  std::cout << "Final CacheStats final_size=" << cache.size() << " hits=" << stats.hits
             << " misses=" << stats.misses << " evictions=" << stats.evictions << '\n';
 }

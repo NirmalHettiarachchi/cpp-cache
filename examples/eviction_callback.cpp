@@ -10,12 +10,12 @@ int main() {
   int insertions = 0;
 
   lru.set_on_evict([&evicted_keys](const int& key, const std::string& value) {
-    std::cout << "evicted " << key << "=" << value << '\n';
+    std::cout << "on_evict " << key << "=" << value << '\n';
     evicted_keys.push_back(key);
   });
   lru.set_on_insert([&insertions](const int& key, const std::string& value) {
     ++insertions;
-    std::cout << "inserted " << key << "=" << value << '\n';
+    std::cout << "on_insert " << key << "=" << value << '\n';
   });
 
   lru.put(1, "one");
@@ -24,7 +24,7 @@ int main() {
 
   cpp_cache::Cache<int, std::string, cpp_cache::SLRUPolicy> slru(5);
   slru.set_on_evict([](const int& key, const std::string& value) {
-    std::cout << "SLRU probationary eviction " << key << "=" << value << '\n';
+    std::cout << "SLRU probationary eviction, not protected: " << key << "=" << value << '\n';
   });
   slru.put(1, "hot");
   (void)slru.get(1);  // Promote to protected.

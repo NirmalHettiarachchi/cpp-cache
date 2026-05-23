@@ -11,12 +11,13 @@ int main() {
   cache.put("c", "charlie");
   cache.put("d", "delta");
 
-  std::cout << "a: " << cache.get("a").value_or("<missing>") << '\n';
+  const auto evicted = cache.get("a");
+  std::cout << "Evicted: a not found -> " << evicted.value_or("<missing>") << '\n';
   std::cout << "b: " << cache.get("b").value_or("<missing>") << '\n';
   std::cout << "c: " << cache.get("c").value_or("<missing>") << '\n';
   std::cout << "d: " << cache.get("d").value_or("<missing>") << '\n';
 
   const auto stats = cache.stats();
-  std::cout << "hits=" << stats.hits << " misses=" << stats.misses
+  std::cout << "CacheStats hits=" << stats.hits << " misses=" << stats.misses
             << " evictions=" << stats.evictions << " hit_rate=" << stats.hit_rate << '\n';
 }

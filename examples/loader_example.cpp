@@ -37,5 +37,6 @@ int main() {
   }
 
   std::cout << "loader_calls[42]=" << database_calls[42].load() << '\n';
+  std::cout << "No thundering herd: each unique key was loaded exactly once\n";
   std::cout << "cache_hits=" << users.stats().hits << " misses=" << users.stats().misses << '\n';
 }

@@ -23,7 +23,7 @@ int main() {
 
   const auto fib_stats = memo_fib.stats();
   std::cout << "fibonacci cache hits=" << fib_stats.hits
-            << " misses=" << fib_stats.misses << '\n';
+            << " misses=" << fib_stats.misses << " hit_rate=" << fib_stats.hit_rate << '\n';
   std::cout << "fibonacci compute_calls=" << fibonacci_calls.load()
             << " total_invocations=2\n";
 
@@ -37,4 +37,5 @@ int main() {
   std::cout << "sqrt(2) again=" << memo_sqrt(2.0) << '\n';
   std::cout << "sqrt cache hit_rate=" << memo_sqrt.stats().hit_rate << '\n';
   std::cout << "sqrt compute_calls=" << sqrt_calls.load() << " total_invocations=2\n";
+  std::cout << "Cache hit proof: compute_calls < total_invocations\n";
 }

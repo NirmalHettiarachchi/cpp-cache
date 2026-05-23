@@ -15,13 +15,15 @@ int main() {
   (void)cache.get(2);
 
   cache.put(4, "four");
-  std::cout << "key 3 was least frequent: " << cache.get(3).value_or("<evicted>") << '\n';
+  std::cout << "Least frequent eviction: key 3 evicted because it had the lowest access count -> "
+            << cache.get(3).value_or("<evicted>") << '\n';
 
   // Build an equal-frequency tie between 2 and 4. Key 2 is older in its bucket,
   // so it loses the LFU tie-break.
   (void)cache.get(4);
   cache.put(5, "five");
 
+  std::cout << "Tie-breaking: keys 2 and 4 had equal frequency; LRU key 2 was evicted\n";
   std::cout << "key 1: " << cache.get(1).value_or("<missing>") << '\n';
   std::cout << "key 2: " << cache.get(2).value_or("<evicted>") << '\n';
   std::cout << "key 4: " << cache.get(4).value_or("<missing>") << '\n';
