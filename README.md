@@ -1,10 +1,11 @@
 # cpp-cache
 
-![C++17](https://img.shields.io/badge/C%2B%2B-17-blue)
-![Header-Only](https://img.shields.io/badge/header--only-yes-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Thread-Safe](https://img.shields.io/badge/thread--safe-shared__mutex-orange)
-![Dependencies](https://img.shields.io/badge/dependencies-STL%20only-lightgrey)
+[![CI](https://github.com/NirmalHettiarachchi/cpp-cache/actions/workflows/ci.yml/badge.svg)](https://github.com/NirmalHettiarachchi/cpp-cache/actions/workflows/ci.yml)
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
+[![Header Only](https://img.shields.io/badge/header--only-single%20file-brightgreen.svg)](include/cache.hpp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Thread Safe](https://img.shields.io/badge/thread--safe-yes-success.svg)](include/cache.hpp)
+[![No Dependencies](https://img.shields.io/badge/dependencies-none-lightgrey.svg)](include/cache.hpp)
 
 A production-grade, header-only C++ cache library with swappable eviction policies,
 thread-safe APIs, cache-aside loading, memoization, callbacks, snapshots, resizing, and
