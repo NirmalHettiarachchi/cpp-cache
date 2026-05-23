@@ -9,9 +9,6 @@ int main() {
   cache.put("a", "alpha");
   cache.put("b", "bravo");
   cache.put("c", "charlie");
-
-  // Touch a so b becomes the least recently used entry.
-  (void)cache.get("a");
   cache.put("d", "delta");
 
   std::cout << "a: " << cache.get("a").value_or("<missing>") << '\n';
