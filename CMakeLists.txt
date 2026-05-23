@@ -58,16 +58,10 @@ endif()
 
 if(CPP_CACHE_BUILD_TESTS)
   include(CTest)
-  include(FetchContent)
-
-  FetchContent_Declare(
-    doctest
-    URL https://github.com/doctest/doctest/archive/refs/tags/v2.4.11.zip
-    DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
-  FetchContent_MakeAvailable(doctest)
 
   add_executable(tests tests/test_cache.cpp)
-  target_link_libraries(tests PRIVATE cpp_cache doctest::doctest Threads::Threads)
+  target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/tests)
+  target_link_libraries(tests PRIVATE cpp_cache Threads::Threads)
   cpp_cache_configure_target(tests)
   add_test(NAME tests COMMAND tests)
 endif()

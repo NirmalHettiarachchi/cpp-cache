@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "cache.hpp"
-#include "doctest/doctest.h"
+#include "doctest.h"
 
 using namespace std::chrono_literals;
 
