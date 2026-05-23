@@ -31,6 +31,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up MSVC
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
       - name: Configure (Unix)
         if: matrix.os != 'windows-latest'
         run: |
@@ -42,7 +46,7 @@ jobs:
       - name: Configure (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          cmake -S . -B build `
+          cmake -S . -B build -G Ninja `
             -DCMAKE_BUILD_TYPE=Release `
             -DCMAKE_CXX_STANDARD=17
 
@@ -63,7 +67,7 @@ jobs:
       - name: Smoke (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          .\build\Release\examples_lru.exe
-          .\build\Release\examples_lfu.exe
-          .\build\Release\examples_memoize.exe
-          .\build\Release\examples_loader.exe
+          .\build\examples_lru.exe
+          .\build\examples_lfu.exe
+          .\build\examples_memoize.exe
+          .\build\examples_loader.exe
