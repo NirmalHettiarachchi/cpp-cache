@@ -29,6 +29,9 @@ int main() {
     thread.join();
   }
 
+  cache.put(-1, 1);
+  (void)cache.get(-1);
+
   const auto stats = cache.stats();
   std::cout << "All threads done\n";
   std::cout << "Final CacheStats final_size=" << cache.size() << " hits=" << stats.hits
